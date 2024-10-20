@@ -1,0 +1,48 @@
+A<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/margem_tela"
+    >
+
+    <TextView
+        android:id="@+id/nomeApp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Acolhe Pet"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        android:textSize="40sp"
+        android:gravity="center_horizontal"
+        />
+
+    <TextView
+        android:id="@+id/apresentacao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:text="Olá, esta é a versão ínicial do app, para começar selecione o seu tipo de cadastro:"
+        android:textSize="24sp"
+        />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:text="Denunciante"
+        android:textSize="24sp"
+        />
+
+    <Button
+        android:id="@+id/btAbrigo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Abrigo"
+        android:textSize="24sp"
+        />
+
+</LinearLayout>
