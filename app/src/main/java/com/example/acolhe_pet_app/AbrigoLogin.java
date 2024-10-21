@@ -8,14 +8,14 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class DenuncianteLogin extends AppCompatActivity {
+public class AbrigoLogin extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_denunciante_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.denun_login), (v, insets) -> {
+        setContentView(R.layout.activity_abrigo_login);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.abrigo_login), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
