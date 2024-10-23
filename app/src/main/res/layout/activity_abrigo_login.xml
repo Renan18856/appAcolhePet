@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/denun_login"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:id="@+id/abrigo_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/margem_tela"
     >
 
@@ -16,14 +16,14 @@
         android:textSize="24sp"/>
 
     <TextView
-        android:id="@+id/titulologinDenun"
+        android:id="@+id/titulologinAbrigo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:text="Tela de Login do denunciante"
+        android:text="Tela de Login do abrigo"
         android:textSize="24sp"
         android:gravity="center_horizontal"
+        android:textColor="@color/white"
         />
-
 
 </LinearLayout>

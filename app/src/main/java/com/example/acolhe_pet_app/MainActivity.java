@@ -1,5 +1,5 @@
 package com.example.acolhe_pet_app;
-// Imports que eu criei: intent, view. View e button
+// Imports que eu criei: view. View e button do primeiro bloco dos imports
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,9 +11,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private Button botao;
+    Button btDenunciante, btAbrigo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,18 +26,30 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
-        //parte editada (17/10/2024)
-        botao = findViewById(R.id.button);
+        //Vinculando os objetos com a interface gráfica
+        btDenunciante = (Button) findViewById(R.id.btDenunciante);
+        btAbrigo = (Button) findViewById(R.id.btAbrigo);
 
-        //Abaixo está o código do toque no botão
-        botao.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        //Direcionando o click dos botões no evento click
+        btDenunciante.setOnClickListener(this);
+        btAbrigo.setOnClickListener(this);
+    }
 
-                Intent intent = new Intent(MainActivity.this,DenuncianteLogin.class);
-                startActivity(intent);
-            }
-        });
-        //Fim da parte editada (17/10/2024)
+    @Override
+    public void onClick(View view) {
+        //Se clicou no btDenunciante, chamar a activity DenuncianteLogin
+        if (view.getId() == R.id.btDenunciante){
+            Intent denuncianteLogin = new Intent(this,DenuncianteLogin.class);
+            startActivity(denuncianteLogin);
+            //OBS: O "DenuncianteLogin" da linha 42, dentro do parenteses,
+            //deve ser identico ao nome da activity no arquivo AndroidManifest.xml.
+            //OBS: O Intent criado na linha 42 pode ter qualquer nome.
+        }
+
+        //Se clicou no btAbrigo, chamar a activity AbrigoLogin
+        if (view.getId() == R.id.btAbrigo){
+            Intent abrigoLogin = new Intent(this,AbrigoLogin.class);
+            startActivity(abrigoLogin);
+        }
     }
 }
