@@ -13,9 +13,13 @@
         android:theme="@style/Theme.Acolhe_pet_app"
         tools:targetApi="31">
         <activity
+            android:name=".CadastroDenunciante"
+            android:exported="false"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".AbrigoLogin"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".DenuncianteLogin"
             android:exported="false"
