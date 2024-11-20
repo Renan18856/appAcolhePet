@@ -16,10 +16,11 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class CadastroDenunciante extends AppCompatActivity implements View.OnClickListener {
     Button btCADSalvar;
-    EditText txtCADNome, txtCADEmail, txtCADCpf, txtCADSenha, txtCADSenha2;
+    EditText denunCADNome, denunCADEmail, denunCADCelular, denunCADSenha, denunCADSenha2;
 
+    //Aqui serão armazenadas as classes/variáveis que vão para o banco
+    String denunNome, denunEmail, denunCelular, denunSenha, denunSenha2;
 
-    String txtNome, txtEmail, txtCpf, txtSenha, txtSenha2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,13 +32,13 @@ public class CadastroDenunciante extends AppCompatActivity implements View.OnCli
             return insets;
         });
 
-
-        btCADSalvar   = (Button)   findViewById(R.id.btCADSalvar);
-        txtCADNome    = (EditText) findViewById(R.id.txtCADNome);
-        txtCADEmail   = (EditText) findViewById(R.id.txtCADEmail);
-        txtCADCpf     = (EditText) findViewById(R.id.txtCADCpf);
-        txtCADSenha   = (EditText) findViewById(R.id.txtCADSenha);
-        txtCADSenha2  = (EditText) findViewById(R.id.txtCADSenha2);
+        // Aqui, associamos as variáveis aos componentes (no caso eles sendo: EditText) que estão em activity_cadastro_denunciante,xml
+        btCADSalvar     = (Button)   findViewById(R.id.btCADSalvar);
+        denunCADNome    = (EditText) findViewById(R.id.denunCADNome);
+        denunCADEmail   = (EditText) findViewById(R.id.denunCADEmail);
+        denunCADCelular = (EditText) findViewById(R.id.denunCADCelular);
+        denunCADSenha   = (EditText) findViewById(R.id.denunCADSenha);
+        denunCADSenha2  = (EditText) findViewById(R.id.denunCADSenha2);
 
         btCADSalvar.setOnClickListener(this);
     }
@@ -46,11 +47,13 @@ public class CadastroDenunciante extends AppCompatActivity implements View.OnCli
     @Override
     public void onClick(View v) {
         Boolean erro = false;
-        txtNome   = txtCADNome.getText().toString();
-        txtEmail  = txtCADEmail.getText().toString();
-        txtCpf    = txtCADCpf.getText().toString();
-        txtSenha  = txtCADSenha.getText().toString();
-        txtSenha2 = txtCADSenha2.getText().toString();
+        //Aqui estamos pegando os dados digitados pelo usuario, e colocando elas nas variaveis
+        //do banco (No caso as variaveis do banco, são as da esquerda):
+        denunNome    = denunCADNome.getText().toString();
+        denunEmail   = denunCADEmail.getText().toString();
+        denunCelular = denunCADCelular.getText().toString();
+        denunSenha   = denunCADSenha.getText().toString();
+        denunSenha2  = denunCADSenha2.getText().toString();
 
         erro = VerificaDados();
         if (!erro){    // se erro == false
@@ -58,8 +61,7 @@ public class CadastroDenunciante extends AppCompatActivity implements View.OnCli
             BancoController bd = new BancoController(getBaseContext());
             String resultado;
 
-
-            resultado = bd.gravaUsuario(txtNome, txtEmail, txtCpf, txtSenha);
+            resultado = bd.gravaDenun(denunNome, denunEmail, denunCelular, denunSenha);
 
 
             Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
@@ -68,27 +70,40 @@ public class CadastroDenunciante extends AppCompatActivity implements View.OnCli
 
     }
     public boolean VerificaDados() {
-        if (txtNome.isEmpty()) {
+        if (denunNome.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Atenção - O campo NOME deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
-        if (txtEmail.isEmpty()) {
+        if (denunEmail.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Atenção - O campo E-MAIL deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
-        if (txtCpf.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Atenção - O campo CPF deve ser preenchido!", Toast.LENGTH_LONG).show();
+        if (denunCelular.isEmpty()) {
+            //O novo comando verifica se a variável denunCelular está vazia.
+            Toast.makeText(getApplicationContext(), "Atenção - O campo Celular deve ser preenchido", Toast.LENGTH_LONG).show();
             return true;
         }
-        if (txtSenha.isEmpty()) {
+        //Novo comando!!!!
+        // Explicação do comando ^\\d+$ Segundo (ChatGPT):
+        // ^: Representa o início do texto.
+        // \\d: Corresponde a um único dígito (0–9).
+        // +: Significa "um ou mais" dígitos.
+        // $: Representa o final do texto.
+        // O operador ! verifica se o conteúdo NÃO corresponde ao padrão "apenas números".
+        // Caso haja letras ou uma combinação de letras e números, a condição será verdadeira, e a mensagem será exibida.
+        if (!denunCelular.matches("^\\d+$") ){
+            Toast.makeText(getApplicationContext(), "Atenção - O campo Celular deve ter apenas números", Toast.LENGTH_LONG).show();
+            return true;
+        }
+        if (denunSenha.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Atenção - O campo SENHA deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
-        if (txtSenha2.isEmpty()) {
+        if (denunSenha2.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Atenção - O campo CONFIRMAÇÃO DE SENHA deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
-        if (!txtSenha.equals(txtSenha2)){
+        if (!denunSenha.equals(denunSenha2)){
             Toast.makeText(getApplicationContext(), "Atenção - O campos Senha e Confirma Senha não são iguais", Toast.LENGTH_LONG).show();
             return true;
         }

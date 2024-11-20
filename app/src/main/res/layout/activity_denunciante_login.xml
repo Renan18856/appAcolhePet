@@ -13,12 +13,11 @@
         android:layout_marginTop="25dp"
         android:text="E-mail:"
         android:textSize="25dp"/>
-
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:id="@+id/txtLOGEmail"/>
+        android:id="@+id/denunLOGEmail"/>
 
 
     <TextView
@@ -31,7 +30,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:id="@+id/txtLOGSenha"/>
+        android:id="@+id/denunLOGSenha"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,6 +41,7 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:id="@+id/btLOGAcessar"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

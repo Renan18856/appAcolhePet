@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class DenuncianteLogin extends AppCompatActivity implements View.OnClickListener {
     Button btLOGAcessar, btLOGCadastre_se;
-    EditText txtLOGEmail, txtLOGSenha;
+    EditText denunLOGEmail, denunLOGSenha;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +33,8 @@ public class DenuncianteLogin extends AppCompatActivity implements View.OnClickL
 
         btLOGAcessar = (Button) findViewById(R.id.btLOGAcessar);
         btLOGCadastre_se = (Button) findViewById(R.id.btLOGCadastre_se);
-        txtLOGEmail = (EditText) findViewById(R.id.txtLOGEmail);
-        txtLOGSenha = (EditText) findViewById(R.id.txtLOGSenha);
+        denunLOGEmail = (EditText) findViewById(R.id.denunLOGEmail);
+        denunLOGSenha = (EditText) findViewById(R.id.denunLOGSenha);
 
 
         btLOGAcessar.setOnClickListener(this);
@@ -47,19 +47,19 @@ public class DenuncianteLogin extends AppCompatActivity implements View.OnClickL
         if (v.getId()==R.id.btLOGAcessar) {
             // carregar a tela do menu
             if (VerificaDados()) {
-                Intent telaMenu = new Intent(this, MainActivity.class);
-                startActivity(telaMenu);
+                Intent telaMenuDenun = new Intent(this, MenuDenunciante.class);
+                startActivity(telaMenuDenun);
             }
         }
         if (v.getId()==R.id.btLOGCadastre_se) {
             // carregar a tela do cadastre_se
-            Intent telaCadastre_se = new Intent(this, CadastroDenunciante.class);
-            startActivity(telaCadastre_se);
+            Intent telaCadDenun = new Intent(this, CadastroDenunciante.class);
+            startActivity(telaCadDenun);
         }
     }
     public boolean VerificaDados(){
-        String Email = txtLOGEmail.getText().toString();
-        String Senha = txtLOGSenha.getText().toString();
+        String Email = denunLOGEmail.getText().toString();
+        String Senha = denunLOGSenha.getText().toString();
         if (Email.isEmpty()) {
             Toast.makeText(getApplicationContext(), "O campo E_MAIL deve ser preenchido!",
                     Toast.LENGTH_LONG).show();
@@ -72,14 +72,14 @@ public class DenuncianteLogin extends AppCompatActivity implements View.OnClickL
         }
         BancoController bd = new BancoController(getBaseContext());
 
-
+        // Aqui provavelmente é onde os dados serão procurados no banco
         Cursor dados = bd.ProcuraDadosLogin(Email, Senha) ;
 
 
         if(dados.moveToFirst()){
             return true;
         }else{
-            Toast.makeText(getApplicationContext(), "Usuário / senha não cadastrada!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Denunciante / senha não cadastrada!", Toast.LENGTH_LONG).show();
             return false;
         }
 
