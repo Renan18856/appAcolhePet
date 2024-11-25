@@ -3,7 +3,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="red">#Ff0000</color>
-    <color name="laranjaClaro">#ff5722</color>
+
+    <color name="laranjaClaro">#FF9F3F</color>
+    <color name="laranja">#ff5722</color>
     <color name="laranjaEscuro">#e64a19</color>
     <color name="amareloEscuro">#ff9800</color>
+
 </resources>

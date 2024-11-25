@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cadastro_abrigo"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/margem_tela"
+    android:fillViewport="true"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tela de Cadastro Abrigo"
+            android:textColor="@color/white"
+            android:textSize="44sp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Para fazer o cadastro do abrigo, preenche as seguintes informações:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="16dp"
+            android:gravity="center_horizontal"
+            />
+
+        <!--Nome-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nome:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADNome"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--Email-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Email:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--Cidade-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cidade:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADCidade"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--Telefone-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Telefone:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADTelefone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--CNPJ-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CNPJ:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADCnpj"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--Senha-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Senha:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADSenha"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--Senha2-->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Confirmar a senha:"
+            android:textColor="@color/white"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            />
+        <EditText
+            android:id="@+id/abriCADSenha2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"
+            android:textColor="@color/white"
+            />
+
+        <!--Botão de acesso-->
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Salvar dados"
+            android:textSize="25dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:id="@+id/btCADAbrigoSalvar"
+            />
+    </LinearLayout>
+</ScrollView>

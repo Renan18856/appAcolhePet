@@ -18,7 +18,7 @@ public class CadastroDenunciante extends AppCompatActivity implements View.OnCli
     Button btCADSalvar;
     EditText denunCADNome, denunCADEmail, denunCADCelular, denunCADSenha, denunCADSenha2;
 
-    //Aqui serão armazenadas as classes/variáveis que vão para o banco
+    //Aqui serão armazenadas as classes/variáveis que vão para o banco, ao coloca-las nessa parte do código, todas elas se tornam "public".
     String denunNome, denunEmail, denunCelular, denunSenha, denunSenha2;
 
     @Override

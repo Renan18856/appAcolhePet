@@ -7,23 +7,89 @@
     android:background="@drawable/margem_tela"
     >
 
-    <Button
-        android:id="@+id/btSetaDenun"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="voltar"
-        android:textSize="24sp"/>
-
     <TextView
-        android:id="@+id/titulologinAbrigo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:text="Tela de Login do abrigo"
+        android:layout_marginTop="40dp"
+        android:text="Login do abrigo"
+        android:textSize="44sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Para fazer o login, digite as informações pedidas:"
         android:textSize="24sp"
         android:gravity="center_horizontal"
         android:textColor="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_marginTop="16dp"
+        />
+    <EditText
+        android:id="@+id/emailLogAbrigo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Senha"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        />
+    <EditText
+        android:id="@+id/senhaLogAbrigo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="24sp"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Acessar"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/btLOGAbrigoAcesso"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Não sou cadastrado"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cadastre-se"
+        android:textSize="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:id="@+id/btLOGAbrigoCad"
         />
 
 </LinearLayout>

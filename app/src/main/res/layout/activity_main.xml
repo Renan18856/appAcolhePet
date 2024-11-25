@@ -14,8 +14,9 @@
         android:layout_marginTop="100dp"
         android:text="Acolhe Pet"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
-        android:textSize="40sp"
+        android:textSize="44sp"
         android:gravity="center_horizontal"
+        android:textColor="@color/white"
         />
 
     <TextView
@@ -25,6 +26,7 @@
         android:layout_marginTop="70dp"
         android:text="Olá, esta é a versão ínicial do app, para começar selecione o seu tipo de cadastro:"
         android:textSize="24sp"
+        android:textColor="@color/white"
         />
 
     <Button

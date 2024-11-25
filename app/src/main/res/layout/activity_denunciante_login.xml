@@ -5,19 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="30dp">
+    android:background="@drawable/margem_tela">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="LOGIN DENUNCIANTE"
+        android:textSize="44sp"
+        android:textColor="@color/white"
+        android:gravity="center" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="E-mail:"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@color/white"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:id="@+id/denunLOGEmail"/>
+        android:id="@+id/denunLOGEmail"
+        android:textColor="@color/white"/>
 
 
     <TextView
@@ -25,12 +35,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Senha:"
-        android:textSize="25dp"/>
+        android:textSize="25dp"
+        android:textColor="@color/white"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="25dp"
-        android:id="@+id/denunLOGSenha"/>
+        android:id="@+id/denunLOGSenha"
+        android:textColor="@color/white"/>
 
     <Button
         android:layout_width="match_parent"
@@ -48,7 +60,8 @@
         android:text="Não sou cadastrado"
         android:textSize="25dp"
         android:layout_marginTop="25dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/white"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
