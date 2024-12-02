@@ -1,30 +1,33 @@
 package com.example.acolhe_pet_app;
 
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.provider.MediaStore;
-import android.view.View;
-import android.widget.Button;
-import android.content.Intent;
-import android.widget.ImageView;
-import android.app.Activity;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MenuDenunciante extends AppCompatActivity implements View.OnClickListener {
+import android.content.Intent;
+import android.database.Cursor;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
 
-    Button botao1;
-    ImageView img_one;
+import java.util.LinkedList;
+import java.util.List;
 
-    @SuppressLint("MissingInflatedId")
+public class MenuDenunciante extends AppCompatActivity implements View.OnClickListener{
+    //Aqui deve colocar todos os dados que o denunciante fez
+    //ATENÇÃO: Não confudir "lista" com listaDenuncia
+
+    ImageButton btFormulario;
+    //A variável "lista" abaixo é utilizado apenas pelo MenuDenunciante.java
+    //Já o "listaDenuncia" é o id do ListView que está em "activity_menu_denunciante".
+    ListView lista;
+    String email_denun, data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_menu_denunciante);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.menu_denunciante), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -32,34 +35,70 @@ public class MenuDenunciante extends AppCompatActivity implements View.OnClickLi
             return insets;
         });
 
-        botao1 = (Button) findViewById(R.id.botao1);
-        botao1.setOnClickListener(this);
-        img_one = (ImageView) findViewById(R.id.img_one);
-        img_one.setOnClickListener(new  View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(Intent.createChooser(intent, "Escolha sua imagem"), 1);
+        Intent telaMenuDenun = getIntent();  // Aqui estamos usando o Intent da tela de login do denunciante, para achar o email logado do denunciante
+        Bundle parametro = telaMenuDenun.getExtras();
+        email_denun = parametro.getString("email");
+        data = parametro.getString("data");
 
-            }
-        });
+
+        List<ModeloDenuncia> listaDenuncia = null;
+        listaDenuncia = consultaTodosAgendamentos(data);
+
+        DenunciaAdapter adaptador = new DenunciaAdapter(this,listaDenuncia);
+
+        lista = (ListView) findViewById(R.id.listaDenuncia);//Este id deve ser o id da lista, que está em activity_menu_denunciante.xml
+        lista.setAdapter(adaptador);
+
+        // Aqui, associamos os componentes do MenuDenunciante aos id que estão em activity_menu_denunciante:
+        btFormulario = (ImageButton) findViewById(R.id.btFormulario);
+
+        btFormulario.setOnClickListener(this);
     }
 
+    private List<ModeloDenuncia> consultaTodosAgendamentos(String _data) {
+        List<ModeloDenuncia> lista = new LinkedList<ModeloDenuncia>();
+
+        BancoController bd = new BancoController(getBaseContext());
+        Cursor dados = bd.consultaAgendamentos2(_data);
+
+        if (dados.moveToFirst()){
+            // encontrou conteúdo para mostrar na lista
+            do {
+                ModeloDenuncia item = new ModeloDenuncia();
+                item.setIdDenuncia(dados.getInt(0));
+                item.setEmail(dados.getString(1));
+                item.setData(dados.getString(2));
+                item.setNumero(dados.getString(3));
+                item.setRua(dados.getString(4));
+                item.setBairro(dados.getString(5));
+                item.setCidade(dados.getString(6));
+                item.setDescricaoProblema(dados.getString(7));
+                item.setSituacao(dados.getString(8));
+                item.setCelularDenun(dados.getString(9));
+                item.setNomeDenun(dados.getString(10));
+
+                lista.add(item);
+            } while (dados.moveToNext());
+        }else{
+            String msg = "Não há denúncias efetuadas!";
+            Toast.makeText(this,msg,Toast.LENGTH_LONG).show();
+        }
+        return lista;
+    }
+
+    //Clique do botão que leva ao formulário:
     @Override
     public void onClick(View v) {
-        if (v.getId()==R.id.botao1) {
-            Intent telaDenuncia = new Intent(this, TelaDenuncia.class);
-            startActivity(telaDenuncia);
+        if (v.getId()==R.id.btFormulario) {
+            // carregar a tela do formulario denuncia
+            //Copiei e colei o comando da linha 39 - 44 do app do professor no arquivo "SelecionaData.java"
+            //Os códigos abaixo são obrigatórios para que o ImageButton funcione!!
+            Intent telaForm = new Intent(this, FormularioDenuncia.class);
+            Bundle parametro = new Bundle();
+            parametro.putString("email", email_denun);
+            parametro.putString("data", data);
+            telaForm.putExtras(parametro);
+            startActivity(telaForm);
         }
     }
-
-    public void onActivityResult(int RequestCode, int ResultCode, Intent dados){
-        super.onActivityResult(RequestCode, ResultCode, dados);
-        if (ResultCode == Activity.RESULT_OK){
-            if(RequestCode == 1){
-                img_one.setImageURI(dados.getData());
-            }
-        }
-    }
-
 }

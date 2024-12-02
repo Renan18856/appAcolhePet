@@ -31,10 +31,10 @@ public class DenuncianteLogin extends AppCompatActivity implements View.OnClickL
         });
 
 
-        btLOGAcessar = (Button) findViewById(R.id.btLOGAcessar);
+        btLOGAcessar     = (Button) findViewById(R.id.btLOGAcessar);
         btLOGCadastre_se = (Button) findViewById(R.id.btLOGCadastre_se);
-        denunLOGEmail = (EditText) findViewById(R.id.denunLOGEmail);
-        denunLOGSenha = (EditText) findViewById(R.id.denunLOGSenha);
+        denunLOGEmail    = (EditText) findViewById(R.id.denunLOGEmail);
+        denunLOGSenha    = (EditText) findViewById(R.id.denunLOGSenha);
 
 
         btLOGAcessar.setOnClickListener(this);
@@ -48,6 +48,10 @@ public class DenuncianteLogin extends AppCompatActivity implements View.OnClickL
             // carregar a tela do menu
             if (VerificaDados()) {
                 Intent telaMenuDenun = new Intent(this, MenuDenunciante.class);
+                //É obrigatório o comando abaixo, senão o email da tabela dadosDenun não funciona!
+                Bundle parametro = new Bundle();
+                parametro.putString("email", denunLOGEmail.getText().toString());
+                telaMenuDenun.putExtras(parametro);
                 startActivity(telaMenuDenun);
             }
         }

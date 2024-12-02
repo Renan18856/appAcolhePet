@@ -100,4 +100,75 @@ public class BancoController {
         db.close();
         return cursor;
     }
+
+    //Atenção!!
+    //Os métodos abaixo serão utilizados para armazenar
+    //as informações da denúncia!!!
+
+    //Esse é o segundo método utilizado em FormularioDenuncia:
+    public String insereDadosAgendamento( String _email, String _data, String _numero, String _rua, String _bairro, String _cidade
+            , String _descricaoProblema, String _situacao, String _nomeDenun, String _celularDenun) {
+        ContentValues valores;
+        long resultado;
+        db = banco.getWritableDatabase();
+
+        valores = new ContentValues();
+        valores.put("email", _email);
+        valores.put("data", _data);
+        valores.put("numero", _numero);
+        valores.put("rua", _rua);
+        valores.put("bairro", _bairro);
+        valores.put("cidade", _cidade);
+        valores.put("descricaoProblema", _descricaoProblema);
+        valores.put("situacao", _situacao);
+        valores.put("denunNome", _nomeDenun);
+        valores.put("celularDenun", _celularDenun);
+        //os dados das variáveis nomeDenun e celularDenun só
+        //serão utilizado pelo Menu do abrigo
+
+
+        resultado = db.insert("dadosDenuncia", null, valores);
+        db.close();
+
+        if (resultado == -1)
+            return "Atenção - Erro ao gravar denúncia";
+        else
+            return "Denúncia gravada com sucesso";
+    }
+
+    //Este método será utilizado pelo FormularioDenuncia.java (No código do professor, ele é utilizado no Agendamento.java)
+    //Este é o primeiro método utilizado em FormularioDenuncia
+    public Cursor consultaAgendamento1(String data, String numero, String rua, String bairro, String cidade, String descricaoProblema, String situacao, String celularDenun, String nomeDenun) {
+        Cursor cursor;
+        //SELECT idAgendameto, email, data, hora FROM agendamento WHERE data = 'digitado' and hora = 'digitado'
+        String[] campos = { "idDenuncia", "email" ,"data", "numero", "rua", "bairro", "cidade", "descricaoProblema", "situacao", "celularDenun"};
+        String where = "data = '" + data + "' numero = '" + numero + "' rua = '" + rua + "' bairro = '" + bairro + "' cidade = '" + cidade + "' descricaoProblema = '" + descricaoProblema +
+                "' situacao = '" + situacao + "' nomeDenun = '" + nomeDenun + "' and celularDenun = '" + celularDenun + "'";
+        db = banco.getReadableDatabase();
+        cursor = db.query("dadosDenuncia", campos, where, null, null, null,
+                null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+    }
+
+    //Este método será utilizado no MenuDenunciante.java (No código do professor, ele é utilizado no Consulta_lista)
+    //Não confundir "consultaAgendamentos" com "consultaAgendamento"
+    public Cursor consultaAgendamentos2(String _data) {
+        Cursor cursor;
+        //SELECT idAgendameto, email, data, hora FROM agendamento
+        //Pelo que eu entendi, temos colocar as variaveis do banco da tabela dadosDenuncia em "campos".
+        String[] campos = { "idDenuncia", "email", "data", "numero", "rua", "bairro", "cidade", "descricaoProblema", "situacao", "nomeDenun", "celularDenun"};
+        String where = "data = '" + _data+ "'";
+        db = banco.getReadableDatabase();
+        cursor = db.query("dadosDenuncia", campos, where, null, null, null,
+                null, null);
+        if (cursor != null) {
+            cursor.moveToFirst();
+        }
+        db.close();
+        return cursor;
+    }
 }

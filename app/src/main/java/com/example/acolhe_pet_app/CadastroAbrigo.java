@@ -37,6 +37,7 @@ public class CadastroAbrigo extends AppCompatActivity implements View.OnClickLis
         abriCADCnpj = (EditText) findViewById(R.id.abriCADCnpj);
         abriCADSenha = (EditText) findViewById(R.id.abriCADSenha);
         abriCADSenha2 = (EditText) findViewById(R.id.abriCADSenha2);
+        btCADAbrigoSalvar = (Button) findViewById(R.id.btCADAbrigoSalvar);
 
         btCADAbrigoSalvar.setOnClickListener(this);
     }
