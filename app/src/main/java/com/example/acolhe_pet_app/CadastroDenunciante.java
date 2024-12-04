@@ -78,6 +78,11 @@ public class CadastroDenunciante extends AppCompatActivity implements View.OnCli
             Toast.makeText(getApplicationContext(), "Atenção - O campo E-MAIL deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
+        // Verificação se o campo contém "@"
+        if (!denunEmail.contains("@")) {
+            Toast.makeText(getApplicationContext(), "O campo EMAIL precisa de @!", Toast.LENGTH_LONG).show();
+            return true;
+        }
         if (denunCelular.isEmpty()) {
             //O novo comando verifica se a variável denunCelular está vazia.
             Toast.makeText(getApplicationContext(), "Atenção - O campo Celular deve ser preenchido", Toast.LENGTH_LONG).show();

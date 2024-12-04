@@ -2,7 +2,7 @@ package com.example.acolhe_pet_app;
 
 public class ModeloDenuncia {
     int idDenuncia;
-    String email, data, rua, numero, bairro, cidade, descricaoProblema, situacao, nomeDenun, celularDenun;
+    String email, data, rua, numero, bairro, cidade, descricaoProblema, urgencia, nomeDenun, celularDenun;
 
     //método construtor
     public ModeloDenuncia() {
@@ -10,7 +10,7 @@ public class ModeloDenuncia {
     }
     //método construtor
     public ModeloDenuncia(int _id, String _email,String _data, String _numero, String _rua, String _bairro, String _cidade
-            , String _descricaoProblema, String _situacao, String _nomeDenun ,String _celularDenun) {
+            , String _descricaoProblema, String _urgencia, String _nomeDenun ,String _celularDenun) {
         this.setIdDenuncia(_id);
         this.setEmail(_email);
         this.setData(_data);
@@ -19,7 +19,7 @@ public class ModeloDenuncia {
         this.setBairro(_bairro);
         this.setCidade(_cidade);
         this.setDescricaoProblema(_descricaoProblema);
-        this.setSituacao(_situacao);
+        this.setUrgencia(_urgencia);
         this.setCelularDenun(_celularDenun);
         this.setNomeDenun(_nomeDenun);
     }
@@ -48,8 +48,8 @@ public class ModeloDenuncia {
     public void setDescricaoProblema(String _descricaoProblema){
         this.descricaoProblema = _descricaoProblema;
     }
-    public void setSituacao(String _situacao){
-        this.situacao = _situacao;
+    public void setUrgencia(String _urgencia){
+        this.urgencia = _urgencia;
     }
     public void setCelularDenun(String _celularDenun){
         this.celularDenun = _celularDenun;
@@ -84,8 +84,8 @@ public class ModeloDenuncia {
     public String getDescricaoProblema(){
         return this.descricaoProblema;
     }
-    public String getSituacao(){
-        return this.situacao;
+    public String getUrgencia(){
+        return this.urgencia;
     }
     public String getCelularDenun(){
         return this.celularDenun;

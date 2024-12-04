@@ -77,6 +77,11 @@ public class CadastroAbrigo extends AppCompatActivity implements View.OnClickLis
             Toast.makeText(getApplicationContext(), "Atenção - O campo EMAIL deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
+        // Verificação se o campo contém "@"
+        if (!abriEmail.contains("@")) {
+            Toast.makeText(getApplicationContext(), "O campo EMAIL precisa de @!", Toast.LENGTH_LONG).show();
+            return true;
+        }
         if (abriCidade.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Atenção - O campo CIDADE deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;

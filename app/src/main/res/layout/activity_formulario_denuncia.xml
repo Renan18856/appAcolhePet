@@ -144,23 +144,35 @@
             android:textColor="@color/white"
             />
 
-        <!-- Situação -->
+        <!-- Urgência -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Situação"
+            android:text="É urgente?"
             android:textSize="25sp"
             android:textColor="@color/white"
             />
-        <EditText
+        <RadioGroup
+            android:id="@+id/txtAGEUrgencia"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="24sp"
-            android:layout_marginTop="10dp"
-            android:id="@+id/txtAGESituacao"
-            android:textColor="@color/white"
-            />
+            android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/sim"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sim"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
+            <RadioButton
+                android:id="@+id/nao"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Não"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"/>
+        </RadioGroup>
 
         <!-- Nome -->
         <TextView

@@ -9,7 +9,7 @@ public class CriaBanco extends SQLiteOpenHelper {
 
 
     private static final String NOME_BANCO = "banco_exemplo.db";
-    private static final int VERSAO = 17;
+    private static final int VERSAO = 18;
     public CriaBanco(Context context) {
         super(context, NOME_BANCO, null, VERSAO);
     }
@@ -48,7 +48,7 @@ public class CriaBanco extends SQLiteOpenHelper {
                 + "bairro text,"
                 + "cidade text,"
                 + "descricaoProblema text,"
-                + "situacao text,"
+                + "urgencia text,"
                 + "nomeDenun text,"
                 + "celularDenun text)";
         db.execSQL(sql);

@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 public class FormularioDenuncia extends AppCompatActivity implements View.OnClickListener {
@@ -20,7 +22,7 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
     EditText txtAGEBairro;
     EditText txtAGECidade;
     EditText txtAGEDescricaoProblema;
-    EditText txtAGESituacao;
+    RadioGroup txtAGEUrgencia;
     EditText txtAGECelular;
     EditText txtAGENome;
 
@@ -29,7 +31,7 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
 
     //Variáveis que serão usadas para levar os dados a tabela dadosDenun:
     //Decidi colocar elas aqui para facilitar a filtragem de dados.
-    String data, numero, rua, bairro, cidade, descricaoProblema, situacao, celularDenun, nomeDenun;
+    String data, numero, rua, bairro, cidade, descricaoProblema, urgencia, celularDenun, nomeDenun;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +50,7 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
         txtAGEBairro = (EditText) findViewById(R.id.txtAGEBairro);
         txtAGECidade = (EditText) findViewById(R.id.txtAGECidade);
         txtAGEDescricaoProblema = (EditText) findViewById(R.id.txtAGEDescricaoProblema);
-        txtAGESituacao = (EditText) findViewById(R.id.txtAGESituacao);
+        txtAGEUrgencia = (RadioGroup) findViewById(R.id.txtAGEUrgencia);
         txtAGECelular = (EditText) findViewById(R.id.txtAGECelular);
         txtAGENome = (EditText) findViewById(R.id.txtAGENome);
 
@@ -59,6 +61,16 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
     public void onClick(View view) {
         Boolean erro = false;
 
+        // Obtem o RadioButton selecionado pelo ID
+        int selectedId = txtAGEUrgencia.getCheckedRadioButtonId();
+
+        if (selectedId != -1) { // Verifica se algum botão foi selecionado
+            RadioButton selectedButton = findViewById(selectedId);
+            urgencia = selectedButton.getText().toString(); // Obtém o texto do botão selecionado
+        } else {
+            urgencia = ""; // Define como vazio caso nada seja selecionado
+        }
+
 
         int mes = txtAGEData.getMonth() + 1;
         data = txtAGEData.getDayOfMonth() + "/" + mes + "/" + txtAGEData.getYear();
@@ -67,7 +79,7 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
         bairro = txtAGEBairro.getText().toString();
         cidade = txtAGECidade.getText().toString();
         descricaoProblema = txtAGEDescricaoProblema.getText().toString();
-        situacao = txtAGESituacao.getText().toString();
+        //Tirei o urgencia desta parte do código e coloquei ele na parte de cima, onde é verificado se uma opção foi selecionada.
         celularDenun = txtAGECelular.getText().toString();
         nomeDenun = txtAGENome.getText().toString();
 
@@ -78,7 +90,7 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
             BancoController bd = new BancoController(getBaseContext());
             String resultado;
 
-            resultado = bd.insereDadosAgendamento(email_denun, data, numero, rua, bairro, cidade, descricaoProblema, situacao, celularDenun, nomeDenun);
+            resultado = bd.insereDadosAgendamento(email_denun, data, numero, rua, bairro, cidade, descricaoProblema, urgencia, celularDenun, nomeDenun);
             Toast.makeText(getApplicationContext(), resultado, Toast.LENGTH_LONG).show();
         }
     }
@@ -108,8 +120,8 @@ public class FormularioDenuncia extends AppCompatActivity implements View.OnClic
             Toast.makeText(getApplicationContext(), "Atenção - O campo DESCRIÇÃO DO PROBLEMA deve ser preenchido!", Toast.LENGTH_LONG).show();
             return true;
         }
-        if (situacao.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Atenção - O campo SITUAÇÃO deve ser preenchido!", Toast.LENGTH_LONG).show();
+        if (urgencia.isEmpty()) {
+            Toast.makeText(getApplicationContext(), "Atenção - Em URGÊNCIA selecione uma opção", Toast.LENGTH_LONG).show();
             return true;
         }
         if (celularDenun.isEmpty()) {

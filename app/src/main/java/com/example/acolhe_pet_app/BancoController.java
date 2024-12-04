@@ -107,7 +107,7 @@ public class BancoController {
 
     //Esse é o segundo método utilizado em FormularioDenuncia:
     public String insereDadosAgendamento( String _email, String _data, String _numero, String _rua, String _bairro, String _cidade
-            , String _descricaoProblema, String _situacao, String _nomeDenun, String _celularDenun) {
+            , String _descricaoProblema, String _urgencia, String _nomeDenun, String _celularDenun) {
         ContentValues valores;
         long resultado;
         db = banco.getWritableDatabase();
@@ -120,7 +120,7 @@ public class BancoController {
         valores.put("bairro", _bairro);
         valores.put("cidade", _cidade);
         valores.put("descricaoProblema", _descricaoProblema);
-        valores.put("situacao", _situacao);
+        valores.put("urgencia", _urgencia);
         valores.put("nomeDenun", _nomeDenun);
         valores.put("celularDenun", _celularDenun);
         //os dados das variáveis nomeDenun e celularDenun só
@@ -144,7 +144,7 @@ public class BancoController {
         Cursor cursor;
         //SELECT idAgendameto, email, data, hora FROM agendamento
         //Pelo que eu entendi, temos colocar as variaveis do banco da tabela dadosDenuncia em "campos".
-        String[] campos = { "idDenuncia", "email", "data", "numero", "rua", "bairro", "cidade", "descricaoProblema", "situacao", "nomeDenun", "celularDenun"};
+        String[] campos = { "idDenuncia", "email", "data", "numero", "rua", "bairro", "cidade", "descricaoProblema", "urgencia", "nomeDenun", "celularDenun"};
         String where = "email = '" + _email +  "'";
         db = banco.getReadableDatabase();
         cursor = db.query("dadosDenuncia", campos, where, null, null, null,
@@ -160,7 +160,7 @@ public class BancoController {
         Cursor cursor;
         //SELECT idAgendameto, email, data, hora FROM agendamento
         //Pelo que eu entendi, temos colocar as variaveis do banco da tabela dadosDenuncia em "campos".
-        String[] campos = { "idDenuncia", "email", "data", "numero", "rua", "bairro", "cidade", "descricaoProblema", "situacao", "nomeDenun", "celularDenun"};
+        String[] campos = { "idDenuncia", "email", "data", "numero", "rua", "bairro", "cidade", "descricaoProblema", "urgencia", "nomeDenun", "celularDenun"};
         String where = "data = '" + _data +  "'";
         db = banco.getReadableDatabase();
         cursor = db.query("dadosDenuncia", campos, where, null, null, null,

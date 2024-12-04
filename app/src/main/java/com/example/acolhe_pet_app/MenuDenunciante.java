@@ -73,7 +73,7 @@ public class MenuDenunciante extends AppCompatActivity implements View.OnClickLi
                 item.setBairro(dados.getString(5));
                 item.setCidade(dados.getString(6));
                 item.setDescricaoProblema(dados.getString(7));
-                item.setSituacao(dados.getString(8));
+                item.setUrgencia(dados.getString(8));
                 item.setCelularDenun(dados.getString(9));
                 item.setNomeDenun(dados.getString(10));
 

@@ -35,7 +35,7 @@ public class DenunciaAdapter extends ArrayAdapter<ModeloDenuncia> {
         TextView txtCONBairro = (TextView) view.findViewById(R.id.txtCONBairro);
         TextView txtCONCidade = (TextView) view.findViewById(R.id.txtCONCidade);
         TextView txtCONDescricaoProblema = (TextView) view.findViewById(R.id.txtCONDescricaoProblema);
-        TextView txtCONSituacao = (TextView) view.findViewById(R.id.txtCONSituacao);
+        TextView txtCONUrgencia = (TextView) view.findViewById(R.id.txtCONUrgencia);
         TextView txtCONCelularDenun = (TextView) view.findViewById(R.id.txtCONCelularDenun);
         TextView txtCONNomeDenun = (TextView) view.findViewById(R.id.txtCONNomeDenun);
 
@@ -49,7 +49,7 @@ public class DenunciaAdapter extends ArrayAdapter<ModeloDenuncia> {
         txtCONBairro.setText(String.valueOf(dadosDenuncia.getBairro()));
         txtCONCidade.setText(String.valueOf(dadosDenuncia.getCidade()));
         txtCONDescricaoProblema.setText(String.valueOf(dadosDenuncia.getDescricaoProblema()));
-        txtCONSituacao.setText(String.valueOf(dadosDenuncia.getSituacao()));
+        txtCONUrgencia.setText(String.valueOf(dadosDenuncia.getUrgencia()));
         txtCONCelularDenun.setText(String.valueOf(dadosDenuncia.getCelularDenun()));
         txtCONNomeDenun.setText(String.valueOf(dadosDenuncia.getNomeDenun()));
 
