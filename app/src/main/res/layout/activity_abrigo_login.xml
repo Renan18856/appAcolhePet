@@ -61,6 +61,7 @@
         android:textSize="24sp"
         android:textColorHint="@color/white"
         android:textColor="@color/white"
+        android:inputType="textPassword"
         />
 
     <Button

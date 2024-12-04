@@ -38,7 +38,10 @@
             android:id="@+id/txtAGEData"
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
-            android:calendarTextColor="@color/white"/>
+            android:calendarTextColor="@color/white"
+            android:background="@color/laranjaClaro"
+            android:headerBackground="@color/laranjaEscuro"
+            />
 
         <!-- Título: Localização do cachorro -->
         <TextView

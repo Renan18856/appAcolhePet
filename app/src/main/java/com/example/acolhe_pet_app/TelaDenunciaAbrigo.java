@@ -13,7 +13,7 @@ import java.util.List;
 
 public class TelaDenunciaAbrigo extends AppCompatActivity {
     ListView lista;
-    String email_login, data;
+    String email_denun, data, email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +21,7 @@ public class TelaDenunciaAbrigo extends AppCompatActivity {
 
         Intent telaMenuDenun = getIntent();
         Bundle parametro = telaMenuDenun.getExtras();
-        email_login = parametro.getString("email");
+        email_denun = parametro.getString("email");
         data = parametro.getString("data");
 
 
@@ -35,11 +35,11 @@ public class TelaDenunciaAbrigo extends AppCompatActivity {
 
     }
 
-    private List<ModeloDenuncia> consultaTodosAgendamentos(String _data) {
+    private List<ModeloDenuncia> consultaTodosAgendamentos(String data) {
         List<ModeloDenuncia> lista = new LinkedList<ModeloDenuncia>();
 
         BancoController bd = new BancoController(getBaseContext());
-        Cursor dados = bd.consultaAgendamentos2(_data);
+        Cursor dados = bd.consultaAgendamentos3(data);
 
         if (dados.moveToFirst()){
             // encontrou conteúdo para mostrar na lista
@@ -56,6 +56,7 @@ public class TelaDenunciaAbrigo extends AppCompatActivity {
                 item.setSituacao(dados.getString(8));
                 item.setCelularDenun(dados.getString(9));
                 item.setNomeDenun(dados.getString(10));
+
                 lista.add(item);
             } while (dados.moveToNext());
         }else{

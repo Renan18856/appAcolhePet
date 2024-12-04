@@ -3,21 +3,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:layout_margin="20dp">
+    android:background="@drawable/margem_tela">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Selecione a Data"
         android:textSize="30dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:textColor="@color/black"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Escolha uma data, e veja se há denúncias registradas nela:"
+        android:textSize="25dp"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        />
 
     <DatePicker
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="10dp"
-        android:id="@+id/txtSELData"/>
+        android:id="@+id/txtSELData"
+        android:background="@color/laranjaClaro"
+        android:headerBackground="@color/laranjaEscuro"/>
 
     <Button
         android:layout_width="match_parent"

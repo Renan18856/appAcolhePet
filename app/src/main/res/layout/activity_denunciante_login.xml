@@ -42,7 +42,8 @@
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:id="@+id/denunLOGSenha"
-        android:textColor="@color/white"/>
+        android:textColor="@color/white"
+        android:inputType="textPassword"/>
 
     <Button
         android:layout_width="match_parent"

@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     Button btDenunciante, btAbrigo;
 
+    String email_denun;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +51,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //Se clicou no btAbrigo, chamar a activity AbrigoLogin
         if (view.getId() == R.id.btAbrigo){
             Intent abrigoLogin = new Intent(this,AbrigoLogin.class);
+            //Pelo que eu entendi, vai pegar o email_denun do Login do denunciante, e mandar para próxima tela (abrigoLogin):
+            Bundle parametro = new Bundle();
+            parametro.putString("email", email_denun);
+            abrigoLogin.putExtras(parametro);
             startActivity(abrigoLogin);
         }
     }

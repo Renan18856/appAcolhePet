@@ -18,6 +18,8 @@ public class AbrigoLogin extends AppCompatActivity implements View.OnClickListen
     Button btLOGAbrigoAcesso, btLOGAbrigoCad;
     EditText emailLogAbrigo, senhaLogAbrigo;
 
+    String email_denun;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,12 @@ public class AbrigoLogin extends AppCompatActivity implements View.OnClickListen
 
         btLOGAbrigoAcesso.setOnClickListener(this);
         btLOGAbrigoCad.setOnClickListener(this);
+
+
+        //intent para receber o email_denun:
+        Intent abrigoLogin = getIntent();  // Aqui estamos usando o Intent da tela de login do denunciante, para achar o email logado do denunciante
+        Bundle parametro = abrigoLogin.getExtras();
+        email_denun = parametro.getString("email");
     }
 
     @Override
@@ -43,6 +51,9 @@ public class AbrigoLogin extends AppCompatActivity implements View.OnClickListen
             // carregar a tela do menu do abrigo
             if (VerificaDados()) {
                 Intent telaMenuAbri = new Intent(this, MenuAbrigo.class);
+                Bundle parametro = new Bundle();
+                parametro.putString("email", email_denun);
+                telaMenuAbri.putExtras(parametro);
                 startActivity(telaMenuAbri);
             }
         }

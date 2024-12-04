@@ -11,7 +11,7 @@ import android.widget.DatePicker;
 import java.nio.BufferUnderflowException;
 
 public class MenuAbrigo extends AppCompatActivity implements View.OnClickListener {
-    String nome_denun;
+    String email_denun;
     DatePicker txtSELData;
     Button btSELSeleciona;
 
@@ -20,9 +20,9 @@ public class MenuAbrigo extends AppCompatActivity implements View.OnClickListene
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu_abrigo);
 
-        Intent telaMenuDenun = getIntent();
-        Bundle parametro = telaMenuDenun.getExtras();
-        nome_denun = parametro.getString("nomeDenun");
+        Intent telaMenuAbri = getIntent(); //receber o parametro
+        Bundle parametro = telaMenuAbri.getExtras();
+        email_denun = parametro.getString("email");
 
         txtSELData = (DatePicker) findViewById(R.id.txtSELData);
         btSELSeleciona = (Button) findViewById(R.id.btSELSeleciona);
@@ -36,11 +36,11 @@ public class MenuAbrigo extends AppCompatActivity implements View.OnClickListene
         data = txtSELData.getDayOfMonth() + "/" + mes + "/" + txtSELData.getYear();
 
         //ir para a tela de consulta_lista
-        Intent tela = new Intent(this,TelaDenunciaAbrigo.class);
+        Intent telaCONDenun = new Intent(this,TelaDenunciaAbrigo.class);
         Bundle parametro = new Bundle();
-        parametro.putString("email", nome_denun);
+        parametro.putString("email", email_denun);
         parametro.putString("data", data);
-        tela.putExtras(parametro);
-        startActivity(tela);
+        telaCONDenun.putExtras(parametro);
+        startActivity(telaCONDenun);
     }
 }

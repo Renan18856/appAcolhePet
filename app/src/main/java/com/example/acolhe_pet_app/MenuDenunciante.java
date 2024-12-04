@@ -24,7 +24,7 @@ public class MenuDenunciante extends AppCompatActivity implements View.OnClickLi
     //A variável "lista" abaixo é utilizado apenas pelo MenuDenunciante.java
     //Já o "listaDenuncia" é o id do ListView que está em "activity_menu_denunciante".
     ListView lista;
-    String email_denun, data;
+    String email_denun, data, email;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,11 +38,11 @@ public class MenuDenunciante extends AppCompatActivity implements View.OnClickLi
         Intent telaMenuDenun = getIntent();  // Aqui estamos usando o Intent da tela de login do denunciante, para achar o email logado do denunciante
         Bundle parametro = telaMenuDenun.getExtras();
         email_denun = parametro.getString("email");
-        data = parametro.getString("data");
+
 
 
         List<ModeloDenuncia> listaDenuncia = null;
-        listaDenuncia = consultaTodosAgendamentos(data);
+        listaDenuncia = consultaTodosAgendamentos(email_denun);
 
         DenunciaAdapter adaptador = new DenunciaAdapter(this,listaDenuncia);
 
@@ -55,11 +55,11 @@ public class MenuDenunciante extends AppCompatActivity implements View.OnClickLi
         btFormulario.setOnClickListener(this);
     }
 
-    private List<ModeloDenuncia> consultaTodosAgendamentos(String _data) {
+    private List<ModeloDenuncia> consultaTodosAgendamentos(String email) {
         List<ModeloDenuncia> lista = new LinkedList<ModeloDenuncia>();
 
         BancoController bd = new BancoController(getBaseContext());
-        Cursor dados = bd.consultaAgendamentos2(_data);
+        Cursor dados = bd.consultaAgendamentos2(email);
 
         if (dados.moveToFirst()){
             // encontrou conteúdo para mostrar na lista
@@ -93,10 +93,11 @@ public class MenuDenunciante extends AppCompatActivity implements View.OnClickLi
             // carregar a tela do formulario denuncia
             //Copiei e colei o comando da linha 39 - 44 do app do professor no arquivo "SelecionaData.java"
             //Os códigos abaixo são obrigatórios para que o ImageButton funcione!!
+            //Cuidado com os parametros que chama! Eles precisam existir na tela para que funcionem!
             Intent telaForm = new Intent(this, FormularioDenuncia.class);
             Bundle parametro = new Bundle();
             parametro.putString("email", email_denun);
-            parametro.putString("data", data);
+            //parametro.putString("data", data); //Desativei esse comando pois estava dando erro
             telaForm.putExtras(parametro);
             startActivity(telaForm);
         }

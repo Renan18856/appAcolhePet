@@ -49,7 +49,7 @@ public class DenuncianteLogin extends AppCompatActivity implements View.OnClickL
             if (VerificaDados()) {
                 Intent telaMenuDenun = new Intent(this, MenuDenunciante.class);
                 //É obrigatório o comando abaixo, senão o email da tabela dadosDenun não funciona!
-                Bundle parametro = new Bundle();
+                Bundle parametro = new Bundle(); //Esse comando (linhas 51-55) manda dados para outra tela
                 parametro.putString("email", denunLOGEmail.getText().toString());
                 telaMenuDenun.putExtras(parametro);
                 startActivity(telaMenuDenun);
